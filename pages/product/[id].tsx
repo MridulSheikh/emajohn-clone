@@ -1,7 +1,6 @@
 import Head from "next/head";
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import Currency from "react-currency-formatter";
 
 function productDetails({ product }: any) {
   return (
@@ -28,7 +27,7 @@ function productDetails({ product }: any) {
               {product.description}
             </p>
             <p className="mt-5 text-2xl">
-              <Currency quantity={product.price} currency="USD" />
+               <h1>${product.price}</h1>
             </p>
             <button className="btn text-sm mt-3">Add to basket</button>
           </div>

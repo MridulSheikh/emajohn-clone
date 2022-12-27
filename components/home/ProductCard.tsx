@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React from "react";
-import Currency from "react-currency-formatter";
 
 function ProductCard({ title, image, price, description, id, ratting }: any) {
   const router = useRouter()
@@ -12,7 +11,7 @@ function ProductCard({ title, image, price, description, id, ratting }: any) {
       <div className="mt-2">
         <div className="text-sm">{title}</div>
         <div className="text-xl mt-2">
-            <Currency quantity={price} currency="USD" />
+            <h1>${price}</h1>
         </div>
       </div>
     </div>

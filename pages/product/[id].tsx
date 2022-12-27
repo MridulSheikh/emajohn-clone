@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
+import Ratting from "../../components/shared/Ratting";
 
 function productDetails({ product }: any) {
   return (
@@ -20,9 +21,10 @@ function productDetails({ product }: any) {
             </div>
           </div>
           <div>
-            <h1 className="text-xl font-semibold text-watchDogPrimary">
+            <h1 className="text-xl mb-3 font-semibold text-watchDogPrimary">
               {product.title}
             </h1>
+            <Ratting rating={product.rating} />
             <p className="mt-3 text-gray-600 font-semibold">
               {product.description}
             </p>

@@ -12,7 +12,7 @@ const Ratting = ({ rating }: props) => {
   const rattingStar = Array.from({ length: 5 }, (v, index) => {
     let number = index + 0.5;
     return (
-      <span className="mr-1" key={index}>
+      <div className="mr-1" key={index}>
         {/* // @ts-ignore */}
         {rating?.rate > index + 1
           ?< BsStarFill className="text-yellow-500" />
@@ -20,7 +20,7 @@ const Ratting = ({ rating }: props) => {
           ? <BsStarHalf className="text-yellow-500" />
           : <BsStar className="text-yellow-500" />
           }
-      </span>
+      </div>
     );
   });
   return (

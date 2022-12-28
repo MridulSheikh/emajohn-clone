@@ -1,9 +1,14 @@
 import Head from "next/head";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
+import Counter from "../../components/shared/Counter";
 import Ratting from "../../components/shared/Ratting";
 
 function productDetails({ product }: any) {
+  const [quantity, setQuantity] = useState(1);
+  useEffect(()=>{
+    setQuantity(Math.floor(Math.random() * 20))
+  },[])
   return (
     <div>
       <Head>
@@ -13,11 +18,15 @@ function productDetails({ product }: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className=" md:max-w-screen-xl p-5 mx-auto">
+      <div className=" md:max-w-screen-xl p-5 mx-auto">
         <div className="grid md:grid-cols-2 gap-10">
           <div>
             <div className="h-40 xl:h-96">
-              <img className="h-full object-contain mx-auto" src={product.image} alt="" />
+              <img
+                className="h-full object-contain mx-auto"
+                src={product.image}
+                alt={product.title}
+              />
             </div>
           </div>
           <div>
@@ -28,13 +37,20 @@ function productDetails({ product }: any) {
             <p className="mt-3 text-gray-600 font-semibold">
               {product.description}
             </p>
-            <p className="mt-5 text-2xl">
-               <h1>${product.price}</h1>
-            </p>
-            <button className="btn text-sm mt-3">Add to basket</button>
+            <div className="mt-5 text-2xl">
+              <h1>${product.price}</h1>
+            </div>
+            <div className="my-3">
+              {quantity > 0 ? (
+                <p className="text-green-700">Instock ({quantity} product)</p>
+              ) : (
+                <p className="text-red-500">out of stock</p>
+              )}
+            </div>
+            <Counter price={product.price} quantity={quantity} />
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
